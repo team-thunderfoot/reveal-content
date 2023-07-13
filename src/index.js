@@ -11,12 +11,15 @@ class Page {
         document.querySelectorAll(".js--rc").forEach((element, index) => {
             this.content[index] = new RevealContent({
                 element: element,
-                animation: {
+                timeline: "from",
+                animationOptions: {
                     autoAlpha: 0,
                     y: 80,
                     duration: 0.75,
                     ease: "power2.out",
                 },
+                startFrom: "top 80%",
+                markers: false,
             })
         })
 
@@ -31,12 +34,10 @@ class Page {
         })
     }
 
-    events() {
-    }
+    events() {}
 
     refresh() {
         document.querySelectorAll(".js--rc").forEach((element, index) => {
-           
             this.content[index].refresh()
         })
     }

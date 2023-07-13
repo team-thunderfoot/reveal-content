@@ -23,12 +23,15 @@ class Index {
     init() {
         const content = new RevealContent({
             element: document.querySelector(".js--rc"),
-            animation: {
+            timeline: "from",
+            animationOptions: {
                 autoAlpha: 0,
                 y: 80,
                 duration: 0.75,
                 ease: "power2.out",
             },
+            startFrom: "top 80%",
+            markers: false,
     }
 }
 
@@ -39,14 +42,20 @@ new Index();
 
 ## JS Options
 
-• element (required): represents the element that will be animated. It's the only required option.
+• `element` (required): represents the element that will be animated. It's the only required option.
 
-• animation: Allows customizing the animation options for the element. It includes the following properties:
+• `animationOptions`: Allows customizing the animation options for the element. It includes the following properties:
 
--   autoAlpha: The initial opacity of the element. It defaults to 0.
--   y: The displacement on the Y-axis for the animation. It defaults to 30.
--   duration: The duration of the animation in seconds. It defaults to 0.75.
--   ease: The easing function to control the animation's acceleration. It defaults to "power2.out".
+-   `autoAlpha`: The initial opacity of the element. It defaults to 0.
+-   `y`: The displacement on the Y-axis for the animation. It defaults to 30.
+-   `duration`: The duration of the animation in seconds. It defaults to 0.75.
+-   `ease`: The easing function to control the animation's acceleration. It defaults to "power2.out".
+
+• `startFrom`: Sets the starting point of the ScrollTrigger. It accepts a string value representing the ScrollTrigger's starting position. Defaults to "top 80%" if not provided.
+
+• `markers`: Enables or disables ScrollTrigger markers. It accepts a boolean value. Defaults to false if not provided.
+
+• `timeline`: Sets the timeline function (from(), to(), fromTo()) for animation. It accepts a string value. Defaults to "from" if not provided.
 
 ## Usefull Events
 
