@@ -2,13 +2,14 @@ import RevealContent from "./RevealContent"
 
 class Page {
     constructor() {
+        this.content = []
         this.init()
         this.events()
     }
 
     init() {
-        document.querySelectorAll(".js--reveal-content").forEach((element) => {
-            const content = new RevealContent({
+        document.querySelectorAll(".js--rc").forEach((element, index) => {
+            this.content[index] = new RevealContent({
                 element: element,
                 animation: {
                     autoAlpha: 0,
@@ -18,10 +19,32 @@ class Page {
                 },
             })
         })
+
+        document.querySelector(".js--refresh").addEventListener("click", (e) => {
+            e.preventDefault()
+            this.refresh()
+        })
+
+        document.querySelector(".js--destroy").addEventListener("click", (e) => {
+            e.preventDefault()
+            this.destroy()
+        })
     }
 
     events() {
         // Otros eventos de la página...
+    }
+
+    refresh() {
+        document.querySelectorAll(".js--reveal-content").forEach((element, index) => {
+            this.content[index].refresh()
+        })
+    }
+
+    destroy() {
+        document.querySelectorAll(".js--reveal-content").forEach((element, index) => {
+            this.content[index].destroy()
+        })
     }
 }
 

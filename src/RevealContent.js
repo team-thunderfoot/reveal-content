@@ -10,12 +10,15 @@ class RevealContent {
         this.animation = payload.animation
             ? payload.animation
             : { autoAlpha: 0, y: 30, duration: 0.75, ease: "power2.out" }
+
+        this.scrollTrigger = {}
+
         this.init()
     }
     init() {
         let tl = gsap.timeline()
 
-        ScrollTrigger.create({
+        this.scrollTrigger = ScrollTrigger.create({
             trigger: this.DOM.element,
             start: "top 80%",
             animation: tl,
@@ -27,10 +30,11 @@ class RevealContent {
     events() {}
 
     refresh() {
-        this.tl.scrollTrigger.refresh()
+        this.scrollTrigger.refresh()
+        console.log(this.scrollTrigger)
     }
     destroy() {
-        this.tl.scrollTrigger.kill()
+        this.scrollTrigger.kill()
     }
 }
 export default RevealContent
