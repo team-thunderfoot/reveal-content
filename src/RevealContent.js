@@ -22,7 +22,7 @@ class RevealContent {
             trigger: this.DOM.element,
             start: "top 80%",
             animation: tl,
-            markers : true
+            // markers : this.markers
         })
 
         tl.from(this.DOM.element, this.animation)

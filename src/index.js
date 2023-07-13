@@ -35,13 +35,14 @@ class Page {
     }
 
     refresh() {
-        document.querySelectorAll(".js--reveal-content").forEach((element, index) => {
+        document.querySelectorAll(".js--rc").forEach((element, index) => {
+           
             this.content[index].refresh()
         })
     }
 
     destroy() {
-        document.querySelectorAll(".js--reveal-content").forEach((element, index) => {
+        document.querySelectorAll(".js--rc").forEach((element, index) => {
             this.content[index].destroy()
         })
     }
