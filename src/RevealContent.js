@@ -22,6 +22,7 @@ class RevealContent {
             trigger: this.DOM.element,
             start: "top 80%",
             animation: tl,
+            markers : true
         })
 
         tl.from(this.DOM.element, this.animation)
@@ -31,7 +32,6 @@ class RevealContent {
 
     refresh() {
         this.scrollTrigger.refresh()
-        console.log(this.scrollTrigger)
     }
     destroy() {
         this.scrollTrigger.kill()
