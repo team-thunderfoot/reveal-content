@@ -24,7 +24,8 @@
   },
   "dependencies": {
     "@andresclua/jsutil": "^2.0.4",
-    "@babel/core": "^7.14.3"
+    "@babel/core": "^7.14.3",
+    "gsap": "^3.12.2"
   },
   "keywords": [
     "reveal",
