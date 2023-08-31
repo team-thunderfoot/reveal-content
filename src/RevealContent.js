@@ -1,47 +1,65 @@
-import gsap from "gsap"
-import ScrollTrigger from "gsap/ScrollTrigger"
-gsap.registerPlugin(ScrollTrigger)
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 class RevealContent {
     constructor(payload) {
         this.DOM = {
             element: payload.element,
+        };
+        this.animationOptions = payload.animationOptions  ? payload.animationOptions : { autoAlpha: 0, y: 30, duration: 0.75, ease: "power2.out" };
+        this.intitialTrigger = payload.intitialTrigger ? payload.intitialTrigger : "top 80%";
+        this.markers = payload.markers ? payload.markers : false;
+        this.type = payload.type ? payload.type : "from";
+
+        if (!this.DOM.element || this.DOM.element.length === 0) {
+            console.warn("No elements provided.");
+        } else {
+            this.init();
         }
-        this.animationOptions = payload.animationOptions
-            ? payload.animationOptions
-            : { autoAlpha: 0, y: 30, duration: 0.75, ease: "power2.out" }
-
-        this.startFrom = payload.startFrom ? payload.startFrom : "top 80%"
-        this.markers = payload.markers ? payload.markers : false
-        this.scrollTrigger = {}
-        this.timeline = payload.timeline ? payload.timeline : "from"
-
-        this.init()
     }
+
     init() {
-        let tl = gsap.timeline()
 
-        this.scrollTrigger = ScrollTrigger.create({
-            trigger: this.DOM.element,
-            start: this.startFrom,
-            animation: tl,
-            markers: this.markers,
-        })
+        this.tl = gsap.timeline({
+            scrollTrigger: {
+                trigger:  this.DOM.element, // Element to trigger animation
+                start: this.intitialTrigger, // Start when the element is at the center of the viewport
+                markers:this.markers,
+            },
+        });
+        
+        switch(this.type){
 
-        if (this.timeline === "from") tl.from(this.DOM.element, this.animationOptions)
+            case 'from':
+                this.tl.from(this.DOM.element, this.animationOptions);
+            break;
 
-        if (this.timeline === "to") tl.to(this.DOM.element, this.animationOptions)
+            case 'to':
+                this.tl.to(this.DOM.element, this.animationOptions);
+            break;
 
-        if (this.timeline === "fromTo") tl.fromTo(this.DOM.element, this.animationOptions)
+            case 'fromTo':
+                this.tl.fromTo(this.DOM.element, 
+                    this.animationOptions[0], 
+                    this.animationOptions[1]
+                );
+            break;
+        }
     }
 
-    events() {}
 
     refresh() {
-        this.scrollTrigger.refresh()
+        if (this.tl) {
+            this.tl.scrollTrigger.refresh();
+        }
     }
+
     destroy() {
-        this.scrollTrigger.kill()
+        if (this.tl) {
+            this.tl.scrollTrigger.kill();
+        }
     }
 }
-export default RevealContent
+
+export default RevealContent;

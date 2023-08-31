@@ -1,6 +1,6 @@
 # Reveal Content
 
-The `reveal-content` package allows you to easily create reveal animations for specified elements
+The RevealContent class allows you to easily create scroll-triggered animations for HTML elements. It leverages GSAP and ScrollTrigger to provide smooth and customizable animations when elements enter the viewport.
 
 [Here's an example](https://team-thunderfoot.github.io/reveal-content/)
 
@@ -23,39 +23,31 @@ class Index {
     init() {
         const content = new RevealContent({
             element: document.querySelector(".js--rc"),
-            timeline: "from",
+            type: "from",
             animationOptions: {
-                autoAlpha: 0,
-                y: 80,
-                duration: 0.75,
-                ease: "power2.out",
+                ease: 'power2.inOut',
+                opacity: 0
             },
-            startFrom: "top 80%",
+            intitialTrigger: "top 80%",
             markers: false,
-    }
+    })
 }
 
 export default Index;
-
-new Index();
 ```
 
-## JS Options
+## Options
 
 • `element` (required): represents the element that will be animated. It's the only required option.
 
-• `animationOptions`: Allows customizing the animation options for the element. It includes the following properties:
+• `animationOptions`: (Object or Array): Animation options. If the type is 'fromTo', this should be an array of two objects defining the initial and final states. Otherwise, it's a single object defining the animation properties. Default: { autoAlpha: 0, y: 30, duration: 0.75, ease: "power2.out" }.
 
--   `autoAlpha`: The initial opacity of the element. It defaults to 0.
--   `y`: The displacement on the Y-axis for the animation. It defaults to 30.
--   `duration`: The duration of the animation in seconds. It defaults to 0.75.
--   `ease`: The easing function to control the animation's acceleration. It defaults to "power2.out".
 
-• `startFrom`: Sets the starting point of the ScrollTrigger. It accepts a string value representing the ScrollTrigger's starting position. Defaults to "top 80%" if not provided.
+• `intitialTrigger` (String): The trigger point for the animation to start when the element enters the viewport. Default: "top 80%".
 
-• `markers`: Enables or disables ScrollTrigger markers. It accepts a boolean value. Defaults to false if not provided.
+•  `markers` (Boolean): Whether to display markers for ScrollTrigger. Default: false.
 
-• `timeline`: Sets the timeline function (from(), to(), fromTo()) for animation. It accepts a string value. Defaults to "from" if not provided.
+• `type` (String): Animation type. Can be 'from', 'to', or 'fromTo'. Default: "from".
 
 ## Usefull Events
 

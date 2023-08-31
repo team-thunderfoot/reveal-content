@@ -23,6 +23,10 @@ class Page {
             })
         })
 
+       
+    }
+
+    events() {
         document.querySelector(".js--refresh").addEventListener("click", (e) => {
             e.preventDefault()
             this.refresh()
@@ -33,8 +37,6 @@ class Page {
             this.destroy()
         })
     }
-
-    events() {}
 
     refresh() {
         document.querySelectorAll(".js--rc").forEach((element, index) => {
