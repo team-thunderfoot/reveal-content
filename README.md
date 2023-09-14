@@ -29,7 +29,8 @@ class Index {
                 opacity: 0
             },
             intitialTrigger: "top 80%",
-            markers: false,
+            # pinnedContainer: null,
+            # markers: false,
     })
 }
 
@@ -42,10 +43,11 @@ export default Index;
 
 • `animationOptions`: (Object or Array): Animation options. If the type is 'fromTo', this should be an array of two objects defining the initial and final states. Otherwise, it's a single object defining the animation properties. Default: { autoAlpha: 0, y: 30, duration: 0.75, ease: "power2.out" }.
 
-
 • `intitialTrigger` (String): The trigger point for the animation to start when the element enters the viewport. Default: "top 80%".
 
-•  `markers` (Boolean): Whether to display markers for ScrollTrigger. Default: false.
+• `markers` (Boolean): Whether to display markers for ScrollTrigger. Default: false.
+
+• `pinnedContainer` (Element / String): It is used when having pinned elements inside another pinned element. It is not necessary to set it if it is not the mentioned use case. It is necessary for example, when we use horizontal scroll in the same page.
 
 • `type` (String): Animation type. Can be 'from', 'to', or 'fromTo'. Default: "from".
 

@@ -19,11 +19,10 @@ class Page {
                     ease: "power2.out",
                 },
                 startFrom: "top 80%",
+                // pinnedContainer: document.querySelector(""),
                 markers: false,
             })
         })
-
-       
     }
 
     events() {
