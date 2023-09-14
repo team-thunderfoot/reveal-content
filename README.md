@@ -45,9 +45,9 @@ export default Index;
 
 • `intitialTrigger` (String): The trigger point for the animation to start when the element enters the viewport. Default: "top 80%".
 
-• `markers` (Boolean): Whether to display markers for ScrollTrigger. Default: false.
+• `markers (optional)` (Boolean): Whether to display markers for ScrollTrigger. Default: false.
 
-• `pinnedContainer` (Element / String): It is used when having pinned elements inside another pinned element. It is not necessary to set it if it is not the mentioned use case. It is necessary for example, when we use horizontal scroll in the same page.
+• `pinnedContainer (optional)` (Element / String): It is used when having pinned elements inside another pinned element. It is not necessary to set it if it is not the mentioned use case. It is necessary for example, when we use horizontal scroll in the same page.
 
 • `type` (String): Animation type. Can be 'from', 'to', or 'fromTo'. Default: "from".
 
