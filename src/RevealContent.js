@@ -4,7 +4,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 class RevealContent {
     constructor(payload) {
-        console.log('reveal content 0.0.10')
+        // console.log('reveal content 0.0.10')
         this.DOM = {
             element: payload.element,
             pinnedContainer: payload.pinnedContainer ? payload.pinnedContainer : null,
